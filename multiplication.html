@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(15, 146, 146);
+        }
+
+        #display {
+            border: 1px solid green;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            column-gap: 1px;
+            height: 110vh;
+            /* width: 210vh; */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Multiplication table generator</h2>
+    <p>generate a multiplication table</p>
+    <span>from:</span><input type="number" name="" id="firstnumber">
+    <span>to:</span><input type="number" name="" id="secondnumber">
+    <button style="background-color:lightblue;" onclick="togglemodal()">Generate</button>
+
+    <div>
+        <div id="display">
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+
+    </script>
+
+
+
+    <script>
+        let firstInput = document.getElementById('firstnumber');
+        let secondInput = document.getElementById('secondnumber');
+
+        display.innerHTML ='';
+        function togglemodal() {
+          
+            if(firstInput.value > secondInput.value ) {
+                // console.log('thrown an error');
+                alert('error')
+                return
+            }
+            for (let i = Number(firstInput.value); i <= Number(secondInput.value); i++) {
+                for (let x = 1; x <= 12; x++) {
+                    display.innerHTML += `<p>${i} x ${x} = ${i * x} </p>`
+                    console.log(x);
+                }
+            }
+        }
+        // togglemodal()
+
+
+
+    </script>
+
+</body>
+
+</html>

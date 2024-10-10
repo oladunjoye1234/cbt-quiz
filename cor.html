@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student information table</title>
+</head>
+<body>
+    <h3>Student information table </h3>
+    <div class="container">
+        
+        <div>
+            <label for="name">Name :</label>
+            <input placeholder="name" name="name" type="text" id="nameInp">
+        </div>
+        <div>
+            <label for="age">Age :</label>
+            <input placeholder="Age" name="age" min="0" type="number" id="ageInp">
+        </div>
+            
+        <div>
+            <label for="course">Course :</label>
+            <input placeholder="Course" name="course" type="text" id="courseInp">
+        </div>
+        <button onclick="addStudent()">ADD</button>
+        <div>
+            <label for="search">Search</label>
+            <input type="text" placeholder="search name" id="searchInp">
+        </div>
+    </div>
+
+
+    <table>
+        <thead>
+            <th>S/N</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+        </thead>
+        <tbody id="studentTableBody">
+            <tr>
+                <td colspan="4">No record here</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="./cor.js"></script>
+</body>
+</html>

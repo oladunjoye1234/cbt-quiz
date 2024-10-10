@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <input type="text" id="Displayname">
+    <button onclick="ADD()">Add</button>
+
+    <div id="display"></div>
+
+    <!-- <p><i class="fa-solid fa-clock-rotate-left"></i></p> -->
+
+
+
+    <script>
+        
+        let Name = []
+        function ADD(){
+            let Display = Displayname.value.toUpperCase();
+
+            if (Display === '') {
+                alert('please enter a value');
+                return;
+                
+            }
+
+            if (Name.some(item => item.title)) {
+                alert('value already exits')
+                return;
+                
+            }
+
+            if (Name ){
+
+            }
+
+          
+          let obj= {
+            title : Display,
+          }
+
+           Name.push(obj)
+           showAllItemOnUI() 
+
+            
+           Display.value = ''
+
+        }
+
+
+        function  showAllItemOnUI(){
+            display.innerHTML = ''
+            Name.forEach((element,i) => {
+                display.innerHTML += `<div> 
+                         <p>${i + 1}
+                            ${element.title}</p>
+                    </div>`
+            })
+        }
+
+       
+
+        
+
+         
+        //07010129246
+    </script>
+</body>
+</html>

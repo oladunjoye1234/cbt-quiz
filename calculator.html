@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container{
+        border: thin solid black;
+        width: 17%;
+        margin: auto;
+        border-radius: 5px;
+        /* margin-left: 90px; */
+        background-color: skyblue;
+        /* align-items: center; */
+        /* justify-content: center; */
+
+        
+    }
+    .header{
+        height: 3vh;
+    }
+</style>
+<body >
+
+
+    <div class="container">
+        <div class="header">
+            <p style="color: white;">Standard</p>
+        </div>
+        <div>
+            <input type="text" style="width: 206px; height: 3vh; gap: 2px;  " id="Screen1">
+        </div> 
+    
+    <div >
+        <input type="text" style="width: 206px; height: 3vh; margin-top: 2px;" id="displayValue">
+        <div style=" border: none;  gap: 9px; height:4vh ;display: flex; justify-content: center; align-items: center; border: thin solid black; margin-top: 2px; background-color: skyblue;">
+            <p>MC</p>
+            <p>MR</p>
+            <p>M+</p>
+            <p>M-</p>
+            <p>MS</p>
+            <p>M</p>
+
+         </div>
+    </div>
+    
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:3px; padding: 5px; ">
+        
+        <button onclick="Add('%')">%</button>
+        <button>CE</button>
+        <button onclick="Allclear()">C</button>
+        <button onclick="Clear()">del</button>
+        <button onclick="Add('')"><sup>1</sup>/x</button>
+        <button><sub>x</sub>2</button>
+        <button><sub>2</sub>x</button>
+        <button onclick="Operators('/')">/</button>
+        <button onclick="Displaynumber('7')" >7</button>
+        <button onclick="Displaynumber('8')">8</button>
+        <button onclick="Displaynumber('9')">9</button>
+        <button onclick="Operators('*')">*</button>
+        <button onclick="Displaynumber('4')">4</button>
+        <button onclick="Displaynumber('5')" >5</button>
+        <button onclick="Displaynumber('6')">6</button>
+        <button onclick="Operators('-')">-</button>
+        <button onclick="Displaynumber('1')">1</button>
+        <button onclick="Displaynumber('2')">2</button>
+        <button onclick="Displaynumber('3')">3</button>
+        <button onclick="Operators('+')">+</button>
+        <button>+/-</button>
+        <button onclick="Displaynumber('0')">0</button>
+        <button onclick="Displaynumber('.')">.</button>
+        <button onclick="Submit()">=</button>
+    </div>
+
+
+</div>
+
+
+
+    <script>
+        let getFirstVal;
+        let Oper = ''
+        let Candelete = false
+        let Cancalculate = false 
+
+        function Displaynumber(number){
+            displayValue.value += number
+            if (Candelete) {
+                displayValue.value = number
+                Candelete = false
+            }
+          
+        }
+
+         function Operators(message){
+            getFirstVal = displayValue.value;
+            Oper = message;
+            Candelete = true;
+            Cancalculate = true;
+            if(message == '1/x'){
+                Screen1.value += '1/x' + displayValue.value
+            }
+            else{
+                Screen1.value += displayValue.value + message 
+            }
+         }
+         function Submit(){
+            if (Oper == '/'){
+                displayValue.value = getFirstVal + '/' + Screen1.value + '='
+                Screen1.value = getFirstVal  / Screen1.value
+            }
+        
+         }
+
+    function Clear(){
+        let inp = document.getElementById('displayValue');
+        inp.value = inp.value.slice(0, -1);
+    }
+
+    function Allclear() {
+        let inp = document.getElementById('displayValue');
+        document.getElementById('Screen1').value;
+        Screen1.value = '',
+        inp.value = '';        
+    }
+    </script>
+</body>
+</html>     

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ternary Operator</h2>
+
+
+
+    <script>
+        //Ternary Operator - ?  - conditional operator
+        // (condition) ? truthy expression : falsy expression
+
+        let canVote;
+        let age = 25;
+
+        // if (age >= 18 && age < 60) {
+        //     alert('You are old enough to vote')
+        // }
+        // else if (age >= 60 ){
+        //     alert('You are too old enough to vote')
+
+        // }
+        // else{
+        //     alert('You are too young to vote')
+        // }
+
+
+        // canVote = age >= 18 && age < 60 ? true : false;
+        // console.log(canVote);
+
+        // age >= 18 && age < 60 ? alert('You are old enough to vote') : age > 59 ?  alert('You are too old enough to vote') :  alert('You are too young to vote')
+
+
+
+        //Array methods
+        //filter method - returns elements of an array that pass(meet) the condition in our callback function
+        //does not mutate(change) the original array
+        //returns a new array
+
+        let numbers = [1,2,3,4,5,6,7,8,9,10];
+        console.log(numbers, 'numbers array');
+        let oddNumbers = numbers.filter((number)=>{
+            console.log(`Is ${number} an odd number?: ${number % 2 != 0}`);
+            return number % 2 != 0
+        })
+
+        console.log(oddNumbers, 'odd numbers');
+        let evenNumbers = numbers.filter((num)=>{
+            return num % 2 === 0
+        })
+        console.log(evenNumbers, 'even numbers');
+
+        let balls = [{color:'blue'}, {color:'blue'},{color:'red'}, {color:'green'},{color:'red'},{color:'blue'}];
+
+        let blueBalls = balls.filter((ball)=>{
+            return ball.color === 'blue'
+            // return ball['color'] === 'blue'
+        })
+        console.log(blueBalls, 'blueBalls');
+
+        let redBalls = balls.filter(ball => ball['color'] === 'red');
+        console.log(redBalls, 'redBalls');
+
+
+        
+    </script>
+</body>
+</html>

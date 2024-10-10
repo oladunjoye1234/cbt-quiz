@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        let a = 10;
+
+        let b = a++; //post increment 
+        console.log(`answer to $(b)`);
+        console.log(a);
+
+        let c = a--; // post decrement 
+        console.log(`answer to $(c)`);
+        console.log(a);
+
+        let d = ++a; //pre increment
+        console.log(`answer to $(d)`);
+        console.log(a);
+
+        let e = --a; //pre decrement
+        console.log(`answer to $(e)`);
+        console.log(a);
+
+
+
+        console.log(5 !== 5); //false 
+        console.log(5 !== `5`); //true
+
+        //logical operators 
+        console.log(3 > 2 && 5 < 2 );//false 
+        console.log(3 > 2 && 1 < 2 );//true
+
+        console.log(3 > 3 || 5 < 1 );//true 
+        console.log(3 > 3 || 5 < 1 );//false
+
+
+        console.log(3 >= 3);//true
+        console.log(4 <= 3);//false
+        console.log(5 < 2);//false
+
+
+
+
+        //regular function decleration
+
+        function regularFunction(param1, param2){//parameter
+            return param1 + param2; //30
+        }
+        console.log(regularFunction(10,20));//argument
+
+
+        //2.function explression (annoynmous)
+        const annoynmousFunction = function(param1,param2){
+            return param1 + param2
+        }
+        console.log(annoynmousFunction(3,4));
+
+        //3. Named function decleration 
+        
+        //4. Arrow function 
+        const arrowFunction = (param1, param2) => param1 + param2;
+        console.log(arrowFunction(2,4));
+
+
+        // class work
+
+        let firstnumber = 10;
+        let secondnumber = 5;
+
+
+        function addsum() {
+            let sumnum = firstnumber + secondnumber;
+            let subnum = firstnumber - secondnumber;
+            let divnum = firstnumber/secondnumber;
+            let bodnum = firstnumber % secondnumber;
+            let mulnum = firstnumber * secondnumber;
+            
+            console.log(bodnum);
+            console.log(subnum);
+            console.log(divnum);
+            console.log(sumnum);
+            console.log(mulnum);
+        }
+        addsum();
+
+        // function division() {
+        //     let division1 = firstnumber/secondnumber;
+        //     console.log(division1);
+
+        // }
+        // division();
+
+        function addition(add1,add2){
+            let Sum = add1 + add2;
+            console.log(Sum);
+        }
+        addition(10,11);
+
+        //    function subtraction() {
+        //     let subtraction1 = firstnumber-secondnumber;
+        //     console.log(subtraction1);
+        // }
+        // subtraction();
+
+        // function bodmas() {
+        //     let bod1 = firstnumber % secondnumber;
+        //     console.log(bod1);
+        // }
+        // bodmas();
+
+
+
+        function multiply(){
+            let multiplyfirst = 5
+            let secondmultiply = 10
+            let Sum2 = multiplyfirst*secondmultiply;
+            console.log(Sum2);
+        }
+    multiply();
+
+        // function (add1,add2){
+        //     let Sum = add1/add2;
+        //     console.log(Sum);
+        // }
+        // addition(10,11);
+
+
+    
+    </script>
+</body>
+</html>

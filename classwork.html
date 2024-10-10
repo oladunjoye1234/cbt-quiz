@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="firstnumber" >
+    <input type="number" id="secondnumber">
+    <button onclick="getSum()">ADD</button>
+    <p id="answer"></p>
+
+
+
+
+    <script>
+         
+        function getSum(){
+           let firstInpVal = document.getElementById('firstnumber');
+           let secondInpVal = document.getElementById('secondnumber')
+           let sumFirstVal = firstInpVal.value;
+           let sumSecondval = secondInpVal.value;
+           // console.log(sumFirstVal, sumSecondval);
+
+           let totalSum = Number(sumFirstVal) + Number(sumSecondval);
+           console.log(totalSum);
+
+
+           document.getElementById('answer').innerHTML +=`${totalSum}`
+           firstInpVal.value = '';
+           secondInpVal.value = '';
+        }
+       // function getSum(){
+       //     let firstInpVal = document.getElementById('firstnumber');
+       //     let secondInpVal = document.getElementById('secondumber');
+       //     let sumFirstval = firstInpVal.value;
+       //     let sumSecondval = secondInpVal.value;
+       //     console.log(sumFirstval, secondvalue);
+       // let add = sumFirstval + sumSecondval;
+       // console.log(add);
+
+       // }
+   </script>
+</body>
+</html>

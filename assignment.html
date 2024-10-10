@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" id="input" oninput="myclick()">
+    <p id="pText"></p>
+
+
+    <script>
+        function myclick(){
+            let show = document.getElementById('input').value;
+            // console.log(show);
+            document.getElementById('pText').innerHTML=`${show}`
+        }
+    </script>
+</body>
+</html>

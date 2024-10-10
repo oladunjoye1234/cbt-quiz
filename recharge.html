@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: rgb(162, 172, 176);
+    }
+</style>
+<body>
+    <div id="container">
+        <div style="display: flex; align-items: center; justify-content: center; ">
+            <h3 >Recharge Card Generator</h3>
+        </div id="container">
+    
+        
+            <div style="display: flex; gap: 70px;" >
+                <div style="width: 40%;">
+                    NETWORK : <br> 
+                    <select name="" id="networkVal" style="width: 50%;">
+                      <option value="MTN">MTN</option>
+                      <option value="GLO">GLO</option>
+                      <option value="AIRTEL">AIRTEL</option>
+                      <option value="9MOBILE">9MOBILE</option>
+                    </select>
+                </div>
+             <div style="width: 50%;">
+                PIN: <br>
+                <input id="savedigit" type="text" placeholder="Enter Pin" style="width:50%;">
+                <p id="errorINP"></p>
+             </div>
+
+             
+               
+            </div>
+            <br>
+            <div style="width: 40%;">
+                AMOUNT: <br>
+                <select name="" id="amountVal" style="width: 50%;">
+                    <option value="1000">1000</option>
+                    <option value="500">500</option>
+                    <option value="200">200</option>
+                    <option value="100">100</option>
+                    <option value="50">50</option>
+                  </select>
+                <button onclick="saveBtn()"  style="background-color: rgb(95, 182, 216); border-radius: 3px; border:1px solid">Recharge</button>
+                
+             </div> <br>
+             <div style="width: 40%;">
+                Recharge code : <br>
+                <input id="displaycode" type="text" placeholder="code will be displayed here" style="width: 40%; background-color:rgb(205, 202, 202) ; border: 1px thin black;">
+             </div>
+
+             <div> <br>
+                <button  onclick="Gencode()" style="background-color: rgb(95, 182, 216); border-radius: 3px; border:1px solid;">Generate</button>
+                <button onclick="saveCode()"   style="background-color: rgb(95, 182, 216); border-radius: 3px; border:1px solid;">Save</button>
+             </div>
+
+
+    </div>
+    <div style="gap: 20px;">
+        <table  style="gap: 50px; align-items: center; justify-content: center; margin: auto;width: 90vw; margin-top: 10px;">
+            <thead>
+                <th>S/N</th>
+                <th>Network</th>
+                <th>amount</th>
+                <th>pin</th>
+                <th>Recharge code</th>
+                <th>Status</th>
+                <th>Date created</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="Show" style="background-color:rgb(205, 202, 202); ;">
+                <tr>
+                    <td style="background-color:rgb(205, 202, 202); width: 60vw" colspan="9">No record here</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+
+    
+</body>
+
+
+<script>
+    let show = document.getElementById('displayCont');
+    let char = document.getElementById('displaycode').value;
+    let amount = document.getElementById('amountVal');
+    let network = document.getElementById('networkVal');
+
+    let savePin = [] 
+    let cardPin = "";
+    let cardloadPin = {
+            MTN:'*311*' ,
+            AIRTEL : '*311*',
+            MOBILE : '*311*',
+            GLO : '*311*',
+        }
+        let today = new Date()
+        let day = today.getDate();
+        let month = today.getMonth();
+        let year = today.getFullYear();
+
+    function Gencode(){
+        cardPin= "";
+
+        for (let index = 0; index < 12; index++) {
+        cardPin += Math.floor(Math.random() * 10);
+
+        // console.log(cardPin);
+        
+
+
+      }
+
+      displaycode.value = cardPin;
+
+    }
+
+    function saveCode(){
+        // let char = displaycode.value;
+        let amount = amountVal.value;
+        let network = networkVal.value
+        let pin = cardPin;
+        let href = `${cardloadPin[network]}${pin}#`;
+        let dateVal = `${day}-${month}-${year}`
+
+
+        let generated = {
+             netV : network,
+             amountV : amount,
+             pinVal : pin, 
+             href : href,
+             status : false,
+             dateVal : dateVal,
+        };
+        
+
+        savePin.push(generated);
+        console.log(savePin);
+        
+
+        displayAll()
+
+    }
+
+    function displayAll(){
+        displaycode.value = "" ;
+
+        Show.innerHTML = "" ;
+
+        savePin.forEach((element, index )=> {
+            Show.innerHTML +=`<tr>
+
+            <td>${index + 1}</td>
+            <td>${element.netV}</td>
+            <td>${element.amountV} </td>
+            <td>${element.pinVal} </td>
+            <td>${element.href} </td>
+            <td>${element.status ? 'used': 'unused'} </td>
+            <td>${element.dateVal}</td>
+            <td onclick="del(${index})"><button style="border-radius:2px; border:thin ">delete</button></td>
+            
+                </tr>
+
+
+            `
+            
+        });
+
+        localStorage.setItem('savePin', JSON.stringify(savePin));
+
+    }
+    function getData(){
+        keepData = localStorage.getItem('savePin');
+        if (keepData) {
+            savePin =JSON.parse(keepData);
+            
+            displayAll()
+            }
+    }
+    getData()
+
+    function saveBtn(){
+        let digits = document.getElementById('getdigits');
+        // let savedigit = getdigits.value;
+        console.log(savedigit);
+        
+
+        let takePIN = savePin.find((card) => card.href === digits);
+
+
+    if (takePIN) {
+         if (takePIN.status === true) {
+        errorINP.innerHTML = 'PIN has already been used';
+        errorINP.style.color = 'red'
+    }else{ 
+        takePIN.status = true;
+
+        displayAll()
+        errorINP.innerHTML = 'Recharge Successfull';
+        errorINP.style.color = 'green'
+    }
+}
+else{
+    errorINP.innerHTML = 'PIN existed already'
+    errorINP.style.color = 'red'
+}
+
+
+    }
+
+    function del(index){
+        savePin.splice(index,1);
+
+        displayAll();
+    }
+
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="C:\Users\Hp\Desktop\new javascript class\newcalculator.html">
+
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <style>
+        .container{
+            border: thin solid black;
+            width: 17%;
+            margin: auto;
+            border-radius: 5px;
+            /* margin-left: 90px; */
+            background-color: skyblue;
+            /* align-items: center; */
+            /* justify-content: center; */
+    
+            
+        }
+        .header{
+            height: 3vh;
+            /* display: ; */
+        }
+    </style>
+    <body >
+        <div class="container">
+            <div class="header">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <p style="color: white;">Standard</p>
+            </div>
+            <div>
+                
+                <input type="text" style="width: 206px; height: 3vh; gap: 2px;  " id="Screen1">
+            </div> 
+        
+        <div >
+            <input type="text" style="width: 206px; height: 3vh; margin-top: 2px;" id="displayValue">
+            <div style=" border: none;  gap: 9px; height:4vh ;display: flex; justify-content: center; align-items: center; border: thin solid black; margin-top: 2px; background-color: skyblue;">
+                <p>MC</p>
+                <p>MR</p>
+                <p>M+</p>
+                <p>M-</p>
+                <p>MS</p>
+                <p>M</p>
+    
+             </div>
+        </div>
+        
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:3px; padding: 5px; ">
+            
+            <button style="background-color: rgb(132, 124, 124);" onclick="Operators('%')">%</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Allclear()">CE</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Allclear()">C</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Clear()">del</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('')"><sup>1</sup>/x</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick=""><sub>x</sub>2</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick=""><sub>2</sub>x</button>
+            <button style="background-color: rgb(132, 124, 124);;"onclick="Operators('/')">/</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('7')" >7</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('8')">8</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('9')">9</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Operators('*')">*</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('4')">4</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('5')" >5</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('6')">6</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Operators('-')">-</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('1')">1</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('2')">2</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('3')">3</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Operators('+')">+</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Operators('')">+/-</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('0')">0</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Displaynumber('.')">.</button>
+            <button style="background-color: rgb(132, 124, 124);" onclick="Submit()">=</button>
+        </div>
+    
+    
+    </div>
+
+
+    <i class="fa-thin fa-clock-rotate-left"></i>
+
+
+
+    <script>
+        let Oper = ''
+        let getFirstVal;
+        Candelete = false;
+        Cancalculate = false;
+
+    function Displaynumber(number){
+            displayValue.value += number
+            if (Candelete) {
+                displayValue.value = number
+                Candelete = false
+            }
+          
+        }
+
+    function Operators(Message){
+        getFirstVal = displayValue.value;
+        Oper = Message
+        Candelete =true
+        Cancalculate = true
+
+        if(Message=='1/x'){
+            Screen1.value += '1/' +  displayValue.value
+        }
+        else{
+            Screen1.value += displayValue.value + Message
+        }
+
+    }
+
+    function Submit () {
+        if(Oper == '/'){
+            Screen1.value =  getFirstVal + '/' + displayValue.value + '='
+            displayValue.value = getFirstVal / displayValue.value 
+        }
+        else if(Oper == '+'){
+            Screen1.value = getFirstVal + '+' + displayValue.value + '='
+            displayValue.value = Number(getFirstVal) + Number (displayValue.value)
+        }
+        else if(Oper == '-'){
+            Screen1.value = getFirstVal + '-' + displayValue.value + '='
+            displayValue.value = Number(getFirstVal) - Number (displayValue.value)
+        }
+
+        else if(Oper == '*'){
+            Screen1.value = getFirstVal + '*' + displayValue.value + '='
+            displayValue.value = getFirstVal *  displayValue.value;
+        }
+
+        else if(Oper == '%'){
+            Screen1.value = getFirstVal + '%' + displayValue.value + '='
+            displayValue.value = getFirstVal % displayValue.value;
+        }
+        
+
+        Oper= ''
+        Cancalculate = false;
+        Candelete = true;
+        
+    }
+    function Clear(){
+        let inp = document.getElementById('displayValue');
+        inp.value = inp.value.slice(0,-1);
+    }
+
+    function Allclear(){
+        document.getElementById('displayValue');
+        displayValue.value = '';
+        document.getElementById('Screen1');
+        Screen1.value = '';
+    }
+
+    </script>
+</body>
+</html>

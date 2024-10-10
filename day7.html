@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<video id="video-stream" width="650" height="480" autoplay ></video>
+
+
+
+
+    <script>
+
+    let score = 3; 
+
+    let increments = score--;
+    console.log(increments);
+    console.log(score);
+
+
+
+    let result = increments === score;
+    console.log(result);
+
+
+
+        let enableCamera = async () =>{
+            try {
+                let video = document.getElementById('video-stream');
+
+                let stream = await navigator.mediaDevices.getUserMedia({video: true});
+
+                video.srcObject = stream;
+
+            }catch(error) {
+                console.log(error);
+            }
+        }
+
+        window.onload = enableCamera;
+    </script>
+
+    
+
+</body>
+</html>

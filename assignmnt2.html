@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-items:center;
+        gap: 10px;
+        margin: auto;
+        padding: 10px;
+    }
+    th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    #Show{
+        align-items: center;
+        justify-items: center;
+        /* background-color: aqua; */
+    
+
+    }
+    th {
+            background-color: #007BFF;
+            color: white;
+    }
+</style>
+<body>
+
+    <h3>Student information table </h3>
+<div class="container">
+    
+    <div>
+        Name :
+        <input placeholder="name" type="text" id="firstInp">
+    </div>
+    <div>
+        Age :
+        <input placeholder="Age" type="number" id="secondInp">
+    </div>
+        
+    <div>
+        Course :
+        <input placeholder="Course" type="text" id="thirdInp">
+    </div>
+    <button onclick="display()">ADD</button>
+    <label for="Search">Search</label>
+    <input type="text" id="searchInp" oninput="searchStudent()">
+
+</div>
+
+  <table style="margin: auto; padding: 20px; background-color: skyblue; height:50vh ; width:40%; border-collapse: collapse; ">
+    <thead style="gap: 40px;">
+        <th >S/N</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Action</th>
+    </thead>
+
+    <tbody id="Show">
+        <tr>
+            <td></td>
+        </tr>
+    </tbody>
+  </table>
+   
+
+
+
+
+    <script>
+        let Values = []
+
+
+
+        function searchStudent() {
+    let search =document.getElementById('searchInp').value;
+    // console.log(search );
+    
+    let searchReasult = Values.filter((stud)=>{
+        return stud.Name.startsWith(search)
+        console.log(searchReasult);
+        
+    })
+    showAllItemOnUI(searchReasult);
+}
+
+
+
+        // function Search(){
+        //     let search = document.getElementById('searchInp').value.toLowerCase();
+        //     console.log(search);
+            
+        //     let SearchResult = Values.filter((value)=>{
+        //         console.log(value);
+                
+            
+        //             return value.Name.toLowerCase().includes(search)
+        //             }); 
+        //     showAllItemOnUI(SearchResult);
+        // }
+
+
+        function display(){
+            let firstText = firstInp.value.trim();
+            let Secondinp = secondInp.value.trim();
+            let ThirdInp = thirdInp.value.trim();
+
+            let obj = {
+               Name : firstText,
+               Age : Secondinp,
+               Course : ThirdInp,
+            }
+
+            Values.push(obj);
+            document.getElementById('firstInp').value = '';
+            document.getElementById('secondInp').value = '';
+            document.getElementById('thirdInp').value = '';
+
+            showAllItemOnUI();
+        }
+
+        function showAllItemOnUI(element){
+            Show.innerHTML = ''
+            Values.forEach((element , i ) => {
+
+                Show.innerHTML += `<tr> 
+                    <td> ${i + 1} </td>
+                    <td> ${element.Name} </td> 
+                    <td> ${element.Age} </td>
+                    <td> ${element.Course} </td>
+                    <td><button onclick="stop(${i})"">Delete</button></td>
+                    </tr>`
+                
+            });
+        }
+
+        function stop(index){
+            Values.splice(index, 1);
+            // Show.innerHTML = '';
+            showAllItemOnUI();
+        }
+
+//         function searchThrough() {
+//             let input = document.getElementById('searchInp').value.toLowerCase();
+//             let filteredResult = Values.filter(item => item.toLowerCase().includes(input));
+
+//             let resultList = document.getElementById('Show');
+//             console.log(resultList);
+            
+//             resultList.innerHTML ='';
+
+
+//             if (filteredResult.length > 0) {
+//         filteredResult.forEach(item => {
+//             let li = document.createElement('li');
+//             li.textContent = item;
+//             resultList.appendChild(li);
+//         });
+//     } else {
+//         resultList.innerHTML = '<li>No results found</li>';
+//     }
+// }
+
+// document.getElementById('searchInp').addEventListener('input', searchThrough)
+            
+        
+
+        // function Through(searchInp){
+            
+        //  let lowerCased = searchInp.toLowerCae();
+        //     let Item = Values.filter((Values)=>{
+        //         return;
+        //         console.log(Item);
+                
+        //     }) 
+
+        // }
+
+    </script>
+</body>
+</html>

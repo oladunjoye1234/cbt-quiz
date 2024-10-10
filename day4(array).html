@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="demo"></p>
+
+    <p id="demo1"></p>
+
+    <script>
+        //array method 
+
+        //1.array.lenth()--returns the lenth of the array
+
+        const fruits = ["mango", "banana", "orange", "apple" ,"pawpaw"]
+        console.log(fruits);
+
+        let size = fruits.length;
+        console.log(size);
+
+        document.getElementById("demo").innerHTML = size;
+        
+        
+
+        //2. array.toString() -
+
+        console.log(fruits.toString());
+
+        //3. array.at()
+        let position = fruits.at(2)
+
+        document.getElementById("demo1").innerHTML = position
+
+        // // array.pop()--removes the last item in an array
+        console.log(fruits.pop());  
+        console.log(fruits);
+
+
+        // //array.push()---add new elements to an array
+        console.log(fruits.push("pineapple"));
+        console.log(fruits);
+
+        //array.shift()--
+        console.log(fruits.shift(""));
+        console.log(fruits);
+
+        //array.unshift()-- removes the first array element and shift all other elemnt to a lower index
+
+        console.log(fruits.unshift("grape"));
+        console.log(fruits);
+
+
+
+
+        // array.splice 
+        console.log(fruits.splice(2,3,"berry","cashew"));
+        console.log(fruits);
+
+        //array.slice
+        console.log(fruits.slice(3));
+
+
+        //array.concat()-- returns a new array with the elemnets merged 
+
+        let girls =["sola", "bola","sade"];
+        let boys = ["tunji", "dammy","ugarte"];
+        console.log(girls.concat(boys, fruits));
+        // document.getElementById("demo").innerHTML = girls.concat(boys,fruits)
+
+        let gender = girls.concat(boys,fruits);
+        console.log(gender);
+
+
+
+        let num = "10"
+        console.log(num);
+        console.log(+num);
+        // document.getElementById("demo1").innerHTML = num
+
+        // let newNum = Number(num);
+        // console.log(newNum);
+
+        //assignment
+
+        //1. post increment
+        //2. pre increment 
+        //3. Events, Eventhandler
+        
+        
+        
+        
+              
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+    </script>
+</body>
+</html>

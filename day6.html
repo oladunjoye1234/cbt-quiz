@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="pTagText">hello</p>
+
+    <button onclick="displayText()">click</button>
+    <br><br>
+
+    <div>
+        <input type="text" placeholder="Enter your name" id="userInp">
+
+        <button onclick="getUserName()">submit</button>
+
+        <p id="displayUserName"></p>
+    </div>
+
+    <div>
+        
+        <input type="number"  placeholder="age" id="userAge">
+         <button onclick="getAge()">Enter</button>
+         <p id="displayage"></p>
+    </div>
+
+
+    <div>
+        <select id="SelectGender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input type="text" id="Disgender">
+        <button onclick="getGender()">show</button>
+
+    </div>
+    <script>
+
+        function getGender(){
+            // let Show = document.getElementById('Disgender').value;
+            let Stags = document.getElementById('SelectGender').value;
+            // console.log(Stags);
+            document.getElementById('Disgender').value = Stags;
+
+        
+
+           
+        }
+        let pText = document.getElementById('pTagText');
+
+        function displayText(){
+            let firstText = 'Hello'
+            pText.innerHTML = `${firstText} You're welcome to sqi`
+        }
+
+
+        function getUserName() {
+            let username = document.getElementById('userInp');
+            let userDetails = username.value;
+            console.log(userDetails);
+            document.getElementById('displayUserName').innerHTML = userDetails;
+            username.value = '';
+        }
+
+        function getAge(){
+            let userage = document.getElementById('userAge').value;
+            console.log(userage);
+            document.getElementById('displayage').innerHTML = userage;
+
+        }
+
+
+       
+        // let userdetails = document.getElementById('displayUserName');
+
+        // function getUserName(){
+        //     let userInput = document.getElementById('userInp');
+        //     let myUser = userInput.value;
+        //     console.log(userInput.value);
+
+        //     userdetails.innerHTML = myUser;
+        //     userInput.value = '';
+
+        // }
+
+    </script>
+</body>
+</html>

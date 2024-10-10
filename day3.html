@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+
+
+
+
+    <script>
+        //Data types
+        // 1. string - rpresnt characters 
+        let str = "Dani"
+        //2 . Numbrs - represent numbers with integers and float 
+        let num = 10 
+        //. Booelean - return true or false 
+        let bol = true;
+        console.log(bol);
+
+        console.log(typeof bol);
+        //4. objects - represent a key-pair value 
+        //5. symbols - operators 
+        //6. Undefined - reoresent a variable that has been declared but doesn't have a value 
+        //7. Null - assigning an empty value to a variable 
+
+
+
+        let obj = {};
+        let arr =[];
+        
+        
+       
+
+        let userdetails = {
+            name: "Dami",
+            age : 12,
+            address : "akobo"
+        }
+
+
+        //dot notation 
+        console.log(userdetails.name);
+        console.log(userdetails.age);
+
+        // bracket notation 
+        console.log(userdetails["address"]);
+
+
+        //object destruction 
+        const {name,age,address} = userdetails;
+
+        console.log(name);
+        console.log(age);
+
+        //array
+        let fruits = ["apple", "mango", "orange", "pineapple"];
+
+        console.log(typeof fruits);
+        console.log(fruits[2]);// to print out the index
+        console.log(fruits.length);// ro print out the length
+        console.log(fruits); //to log all the fruits 
+
+        let myDetail = [{name:'Dani', school:'akobo'}]
+
+        console.log(myDetail[0].school);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+        //naming
+        //1.camelcase
+        let camelCase;
+        //2.pascalcase
+        let FirstName;
+        //3.snake 
+        let first_name;
+
+        function finndsum(){
+            let num1= 10;
+            let num2 = 20;
+
+            let sumnum = num1 + num2 ;
+            console.log(sumnum);
+            
+        }
+        finndsum();
+
+        function sum1 (num1,num2){  //parameter
+            let sumNum = num1 + num2;
+            console.log(sumNum);
+            
+        }
+        sum1(10,16); //argument
+    </script>
+</body>
+
+</html>

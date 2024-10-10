@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<h3>SIMPLE WEB BASED CALCULATOR</h3>
+<style>
+    .style1{
+        margin: 100px; 
+        background-color: aqua;
+        height: 20vh;
+        width: 70%;
+        
+    }
+    #secondInput{
+        height: 5vh;
+        margin: 20px;
+    }
+   
+</style>
+<body>
+    <div class="style1">
+    <input style="margin: 30px; height: 5vh;" type="number" id="firstInput">
+    <select  id="mulInput" style="height: 5vh; width: 40px;">
+        <option value="/" >/</option>
+        <option value="+" >+</option>
+        <option value="-">-</option>
+        <option value="*" >*</option>
+    </select>
+    <input type="number" id="secondInput">
+    <input style="height: 5vh;" type="text"   id="answer">
+    <button style="height: 6vh; margin: 20px;" onclick="getsum()">Result</button>
+</div>
+
+
+
+
+
+
+    <script >
+
+        function getsum(){
+            let firstVal = document.getElementById('firstInput')
+            let multiply = document.getElementById('mulInput').value
+            let secondVal = document.getElementById('secondInput')
+            let thirdVal = document.getElementById('answerVal')
+            let sumFirstVal = firstVal.value;
+            let sumSecondVal = secondVal.value;
+        
+            
+           
+            if ( multiply === '+') {
+               answer.value = Number(sumFirstVal) + Number(sumSecondVal)
+            }
+            else if  (multiply === '-') {
+                answer.value = Number(sumFirstVal) - Number (sumSecondVal)
+            }
+            else if (multiply === '*') {
+                answer.value = Number(sumFirstVal) * Number (sumSecondVal)
+                
+            }
+            else{
+                answer.value = Number (sumFirstVal) / Number (sumSecondVal)
+            }
+            
+        
+
+
+        }
+    </script>
+    
+</body>
+</html>
