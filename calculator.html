@@ -1,132 +1,228 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<style>
-    .container{
-        border: thin solid black;
-        width: 17%;
-        margin: auto;
-        border-radius: 5px;
-        /* margin-left: 90px; */
-        background-color: skyblue;
-        /* align-items: center; */
-        /* justify-content: center; */
-
-        
+  <style>
+    .container {
+      border: thin solid black;
+      width: 17%;
+      margin: auto;
+      border-radius: 5px;
+      /* margin-left: 90px; */
+      background-color: skyblue;
+      /* align-items: center; */
+      /* justify-content: center; */
     }
-    .header{
-        height: 3vh;
+    .header {
+      height: 3vh;
     }
-</style>
-<body >
-
-
+  </style>
+  <body>
     <div class="container">
-        <div class="header">
-            <p style="color: white;">Standard</p>
-        </div>
-        <div>
-            <input type="text" style="width: 206px; height: 3vh; gap: 2px;  " id="Screen1">
-        </div> 
-    
-    <div >
-        <input type="text" style="width: 206px; height: 3vh; margin-top: 2px;" id="displayValue">
-        <div style=" border: none;  gap: 9px; height:4vh ;display: flex; justify-content: center; align-items: center; border: thin solid black; margin-top: 2px; background-color: skyblue;">
-            <p>MC</p>
-            <p>MR</p>
-            <p>M+</p>
-            <p>M-</p>
-            <p>MS</p>
-            <p>M</p>
+      <div class="header">
+        <p style="color: white">Standard</p>
+      </div>
+      <div>
+        <input
+          type="text"
+          style="width: 206px; height: 3vh; gap: 2px"
+          id="Screen1"
+        />
+      </div>
 
-         </div>
-    </div>
-    
-    
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:3px; padding: 5px; ">
-        
+      <div>
+        <input
+          type="text"
+          style="width: 206px; height: 3vh; margin-top: 2px"
+          id="displayValue"
+        />
+        <div
+          style="
+            border: none;
+            gap: 9px;
+            height: 4vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: thin solid black;
+            margin-top: 2px;
+            background-color: skyblue;
+          "
+        >
+          <p>MC</p>
+          <p>MR</p>
+          <p>M+</p>
+          <p>M-</p>
+          <p>MS</p>
+          <p>M</p>
+        </div>
+      </div>
+
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          gap: 3px;
+          padding: 5px;
+        "
+      >
         <button onclick="Add('%')">%</button>
         <button>CE</button>
         <button onclick="Allclear()">C</button>
         <button onclick="Clear()">del</button>
-        <button onclick="Add('')"><sup>1</sup>/x</button>
-        <button><sub>x</sub>2</button>
-        <button><sub>2</sub>x</button>
+        <button onclick="Unary('1/x')"><sup>1</sup>/x</button>
+        <button onclick="Unary('x^2')">x²</button>
+        <button onclick="Unary('2^x')">2ˣ</button>
         <button onclick="Operators('/')">/</button>
-        <button onclick="Displaynumber('7')" >7</button>
+        <button onclick="Displaynumber('7')">7</button>
         <button onclick="Displaynumber('8')">8</button>
         <button onclick="Displaynumber('9')">9</button>
         <button onclick="Operators('*')">*</button>
         <button onclick="Displaynumber('4')">4</button>
-        <button onclick="Displaynumber('5')" >5</button>
+        <button onclick="Displaynumber('5')">5</button>
         <button onclick="Displaynumber('6')">6</button>
         <button onclick="Operators('-')">-</button>
         <button onclick="Displaynumber('1')">1</button>
         <button onclick="Displaynumber('2')">2</button>
         <button onclick="Displaynumber('3')">3</button>
         <button onclick="Operators('+')">+</button>
-        <button>+/-</button>
+        <button onclick="ToggleSign()">+/-</button>
         <button onclick="Displaynumber('0')">0</button>
         <button onclick="Displaynumber('.')">.</button>
         <button onclick="Submit()">=</button>
+      </div>
     </div>
 
-
-</div>
-
-
-
     <script>
-        let getFirstVal;
-        let Oper = ''
-        let Candelete = false
-        let Cancalculate = false 
+      const displayValue = document.getElementById("displayValue");
+      const Screen1 = document.getElementById("Screen1");
 
-        function Displaynumber(number){
-            displayValue.value += number
-            if (Candelete) {
-                displayValue.value = number
-                Candelete = false
-            }
-          
+      let getFirstVal;
+      let Oper = "";
+      let Candelete = false;
+      let Cancalculate = false;
+
+      function Displaynumber(number) {
+        if (Candelete) {
+          displayValue.value = number;
+          Candelete = false;
+        } else {
+          displayValue.value += number;
+        }
+      }
+
+      function Operators(message) {
+        if (displayValue.value === "") {
+          return;
         }
 
-         function Operators(message){
-            getFirstVal = displayValue.value;
-            Oper = message;
-            Candelete = true;
-            Cancalculate = true;
-            if(message == '1/x'){
-                Screen1.value += '1/x' + displayValue.value
-            }
-            else{
-                Screen1.value += displayValue.value + message 
-            }
-         }
-         function Submit(){
-            if (Oper == '/'){
-                displayValue.value = getFirstVal + '/' + Screen1.value + '='
-                Screen1.value = getFirstVal  / Screen1.value
-            }
-        
-         }
+        getFirstVal = displayValue.value;
+        Oper = message;
+        Candelete = true;
+        Cancalculate = true;
+        Screen1.value = `${getFirstVal} ${Oper}`;
+      }
 
-    function Clear(){
-        let inp = document.getElementById('displayValue');
-        inp.value = inp.value.slice(0, -1);
-    }
+      function Add(message) {
+        const currentValue = parseFloat(displayValue.value);
+        if (isNaN(currentValue)) {
+          Screen1.value = "Error";
+          return;
+        }
 
-    function Allclear() {
-        let inp = document.getElementById('displayValue');
-        document.getElementById('Screen1').value;
-        Screen1.value = '',
-        inp.value = '';        
-    }
+        if (message === "%") {
+          displayValue.value = (currentValue / 100).toString();
+          Screen1.value = `${currentValue}% = ${displayValue.value}`;
+          Candelete = true;
+          Cancalculate = false;
+        }
+      }
+
+      function Unary(operation) {
+        const currentValue = parseFloat(displayValue.value);
+        if (isNaN(currentValue)) {
+          Screen1.value = "Error";
+          return;
+        }
+
+        let result;
+        if (operation === "1/x") {
+          if (currentValue === 0) {
+            Screen1.value = "Error";
+            return;
+          }
+          result = 1 / currentValue;
+          Screen1.value = `1/(${currentValue}) = ${result}`;
+        } else if (operation === "x^2") {
+          result = currentValue ** 2;
+          Screen1.value = `${currentValue}² = ${result}`;
+        } else if (operation === "2^x") {
+          result = 2 ** currentValue;
+          Screen1.value = `2^(${currentValue}) = ${result}`;
+        }
+
+        displayValue.value = result.toString();
+        Candelete = true;
+        Cancalculate = false;
+      }
+
+      function Submit() {
+        if (!Cancalculate || Oper === "") {
+          Screen1.value = "Error";
+          return;
+        }
+
+        const firstVal = parseFloat(getFirstVal);
+        const secondVal = parseFloat(displayValue.value);
+
+        if (isNaN(firstVal) || isNaN(secondVal)) {
+          Screen1.value = "Error";
+          return;
+        }
+
+        let result;
+        const equation = `${getFirstVal} ${Oper} ${displayValue.value}`;
+
+        if (Oper === "/") {
+          result = firstVal / secondVal;
+        } else if (Oper === "*") {
+          result = firstVal * secondVal;
+        } else if (Oper === "+") {
+          result = firstVal + secondVal;
+        } else if (Oper === "-") {
+          result = firstVal - secondVal;
+        }
+
+        displayValue.value = result.toString();
+        Screen1.value = `${equation} = ${result}`;
+        Candelete = true;
+        Cancalculate = false;
+      }
+
+      function Clear() {
+        displayValue.value = displayValue.value.slice(0, -1);
+      }
+
+      function ToggleSign() {
+        const currentValue = parseFloat(displayValue.value);
+        if (isNaN(currentValue)) {
+          return;
+        }
+        displayValue.value = (currentValue * -1).toString();
+      }
+
+      function Allclear() {
+        displayValue.value = "";
+        Screen1.value = "";
+        getFirstVal = undefined;
+        Oper = "";
+        Candelete = false;
+        Cancalculate = false;
+      }
     </script>
-</body>
-</html>     
+  </body>
+</html>
